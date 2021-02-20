@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const db = require("./config/key").mongoURI;
+const db = require("./config/keys").mongoURI;
 const express = require("express");
 const app = express();
 
