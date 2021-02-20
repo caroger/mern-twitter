@@ -1,5 +1,12 @@
+const mongoose = require("mongoose");
+const db = require("./config/key").mongoURI;
 const express = require("express");
 const app = express();
+
+mongoose
+  .connect(db, { useNewUrlParser: true })
+  .then(() => console.log("Connected to MangoDB successfully"))
+  .catch((err) => console.log(err));
 
 app.get("/", (req, res) => res.send("Hello Roger"));
 
