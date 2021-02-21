@@ -10,5 +10,3 @@ export default class MainPage extends Component {
     );
   }
 }
-
-export default MainPage;
