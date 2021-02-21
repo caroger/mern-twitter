@@ -1,12 +1,13 @@
 const mongoose = require('mongoose');
-const db = require('./config/keys').mongoURI;
 const passport = require('passport');
 const express = require('express');
+
 const app = express();
+const bodyParser = require('body-parser');
 const users = require('./routes/api/users');
 const tweets = require('./routes/api/tweets');
 // for post man
-const bodyParser = require('body-parser');
+const db = require('./config/keys').mongoURI;
 
 // looking for ports in production env
 const port = process.env.PORT || 5000;
@@ -20,7 +21,7 @@ mongoose
 // enable POSTMAN testing
 app.use(
   bodyParser.urlencoded({
-    extended: false,
+    extended: false
   })
 );
 app.use(bodyParser.json());

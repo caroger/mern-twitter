@@ -5,7 +5,7 @@ import './navbar.css';
 export default class NavBar extends Component {
   constructor(props) {
     super(props);
-    this.lgoutUser = this.lgoutUser.bind(this);
+    this.logoutUser = this.logoutUser.bind(this);
     this.getLinks = this.getLinks.bind(this);
   }
 
@@ -28,7 +28,7 @@ export default class NavBar extends Component {
       return (
         <div>
           <Link to={'/signup'}>Signup</Link>
-          <Link to={'/signup'}>Signup</Link>
+          <Link to={'/login'}>Login</Link>
         </div>
       );
     }
