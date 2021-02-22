@@ -16,7 +16,7 @@ class SignupForm extends React.Component {
     this.clearErrors = false;
   }
 
-  UNSAFE_componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps) {
     if (nextProps.signedIn === true) {
       this.props.history.push('/login');
     }
@@ -54,9 +54,9 @@ class SignupForm extends React.Component {
 
   render() {
     return (
-      <div className="signup-form-container">
+      <div className="login-form-container">
         <form onSubmit={this.handleSubmit}>
-          <div className="signup-form">
+          <div className="login-form">
             <br />
             <input
               type="text"
