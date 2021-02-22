@@ -116,5 +116,5 @@ dist
 .pnp.*
 
 # server keys
-config/keys.js
+# config/keys.js
 config/keys_dev.js
