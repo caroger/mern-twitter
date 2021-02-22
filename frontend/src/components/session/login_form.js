@@ -13,7 +13,7 @@ class LoginForm extends React.Component {
     this.renderErrors = this.renderErrors.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.currentUser === true) {
       this.props.history.push('/tweets');
     }
@@ -40,6 +40,16 @@ class LoginForm extends React.Component {
   }
 
   renderErrors() {
+    return (
+      <ul>
+        {Object.keys(this.state.errors).map((error, i) => (
+          <li key={`error-${i}`}>{this.state.errors[error]}</li>
+        ))}
+      </ul>
+    );
+  }
+
+  render() {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>

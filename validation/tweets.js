@@ -2,7 +2,7 @@ const Validator = require('validator');
 const validText = require('./valid-text');
 
 module.exports = function validateTweetInput(data) {
-  let errors = {};
+  const errors = {};
 
   data.text = validText(data.text) ? data.text : '';
 
@@ -16,6 +16,6 @@ module.exports = function validateTweetInput(data) {
 
   return {
     errors,
-    isValid: Object.keys(errors).length === 0,
+    isValid: Object.keys(errors).length === 0
   };
 };

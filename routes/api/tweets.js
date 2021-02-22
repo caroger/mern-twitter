@@ -16,36 +16,28 @@ router.get('/', (req, res) => {
 router.get('/user/:user_id', (req, res) => {
   Tweet.find({ user: req.params.user_id })
     .then((tweets) => res.json(tweets))
-    .catch((err) =>
-      res.status(404).json({ notweetsfound: 'No tweets found from that user' })
-    );
+    .catch((err) => res.status(404).json({ notweetsfound: 'No tweets found from that user' }));
 });
 
 router.get('/:id', (req, res) => {
   Tweet.findById(req.params.id)
     .then((tweet) => res.json(tweet))
-    .catch((err) =>
-      res.status(404).json({ notweetsfound: 'No tweet found with that ID' })
-    );
+    .catch((err) => res.status(404).json({ notweetsfound: 'No tweet found with that ID' }));
 });
 
-router.post(
-  '/',
-  passport.authenticate('jwt', { session: false }),
-  (req, res) => {
-    const { errors, isValid } = validateTweetInput(req.body);
+router.post('/', passport.authenticate('jwt', { session: false }), (req, res) => {
+  const { errors, isValid } = validateTweetInput(req.body);
 
-    if (!isValid) {
-      return res.status(400).json(errors);
-    }
-
-    const newTweet = new Tweet({
-      text: req.body.text,
-      user: req.user.id,
-    });
-
-    newTweet.save().then((tweet) => res.json(tweet));
+  if (!isValid) {
+    return res.status(400).json(errors);
   }
-);
+
+  const newTweet = new Tweet({
+    text: req.body.text,
+    user: req.user.id
+  });
+
+  newTweet.save().then((tweet) => res.json(tweet));
+});
 
 module.exports = router;

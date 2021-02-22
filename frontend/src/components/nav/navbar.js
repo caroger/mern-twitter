@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './navbar.css';
 
-export default class NavBar extends Component {
+class NavBar extends Component {
   constructor(props) {
     super(props);
     this.logoutUser = this.logoutUser.bind(this);
@@ -43,3 +43,5 @@ export default class NavBar extends Component {
     );
   }
 }
+
+export default NavBar;
